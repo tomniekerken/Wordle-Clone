@@ -5,3 +5,9 @@ const secondWordleInputArr = document.querySelectorAll('#second-wordle .wordle-i
 const thirdWordleInputArr = document.querySelectorAll('#third-wordle .wordle-input')
 const fourthWordleInputArr = document.querySelectorAll('#fourth-wordle .wordle-input')
 const fifthWordleInputArr = document.querySelectorAll('#fifth-wordle .wordle-input')
+
+keyArr.forEach(el => {
+    el.addEventListener('click', () => {
+        console.log(el.innerHTML)
+    })
+});
