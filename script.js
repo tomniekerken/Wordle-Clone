@@ -20,6 +20,7 @@ boxArr.forEach(box => {
 
 keyArr.forEach(el => {
     el.addEventListener('click', () => {
-        console.log(el.innerHTML)
+        let ready = document.querySelector('.ready')
+        ready.innerHTML = el.innerHTML
     })
 });
