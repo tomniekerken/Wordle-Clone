@@ -1,5 +1,6 @@
 const keyArr = document.querySelectorAll('.key')
-const boxArr = document.querySelectorAll('.wordle-input')
+const boxNodelist = document.querySelectorAll('.wordle-input')
+const boxArr = Array.from(boxNodelist)
 
 const changeReadyWordle = (el) => {
     for (let i = 0; i < boxArr.length; i++) {
@@ -11,7 +12,24 @@ const changeReadyWordle = (el) => {
 
 const changeWordleInnerHTML = (el) => {
     let ready = document.querySelector('.ready')
-    ready.innerHTML = el.innerHTML
+
+    if (el.innerHTML != 'Enter' || el.innerHTML != 'Löschen') {
+        ready.innerHTML = el.innerHTML
+    }
+
+    if (el.innerHTML == 'Enter') {
+        // TODO
+    }
+
+    if (el.innerHTML == 'Löschen') {
+        ready.innerHTML = ''
+    }
+
+    // TODO: Change Ready Wordle to next possible
+}
+
+const handleSubmit = () => {
+
 }
 
 boxArr.forEach(el => {
