@@ -38,9 +38,14 @@ main {
     border: 1px solid rgb(114, 114, 114);
 }
 
-.wordle-wrapper.active .wordle-input {
+.wordle-input.active {
+    cursor: pointer;
     border: 1px solid #fff;
 }
+
+.wordle-input.active.ready {
+    border: 1px dashed #fff;
+} 
 
 .keyboard-wrapper {
     display: flex;
