@@ -29,7 +29,7 @@ const changeWordleInnerHTML = (el) => {
 }
 
 const handleSubmit = () => {
-
+    // TODO: Proceed the complete user input for a wordle row
 }
 
 boxArr.forEach(el => {
