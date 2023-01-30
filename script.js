@@ -25,7 +25,20 @@ const changeWordleInnerHTML = (el) => {
         ready.innerHTML = ''
     }
 
-    // TODO: Change Ready Wordle to next possible
+    nextReadyWorlde()
+}
+
+const nextReadyWorlde = () => {
+    let current = document.querySelector('.ready')
+    let next
+
+    for (let i = 0; i < boxArr.length; i++) {
+        if (current == boxArr[i]) {
+            next = boxArr[i+1]
+        }
+    }
+    
+    console.log(next)
 }
 
 const handleSubmit = () => {
