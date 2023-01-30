@@ -7,6 +7,10 @@ const changeReadyWordle = (el) => {
         const box = boxArr[i];
         box.classList.remove('ready')
     }
+
+    // TODO: Check if Wordle .ready is inside current wrapper
+    // TODO: Remove possibility to add letters to different wordle wrapper
+
     el.classList.add('ready')
 }
 
