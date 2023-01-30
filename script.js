@@ -37,8 +37,8 @@ const nextReadyWorlde = () => {
             next = boxArr[i+1]
         }
     }
-    
-    console.log(next)
+
+    changeReadyWordle(next)
 }
 
 const handleSubmit = () => {
