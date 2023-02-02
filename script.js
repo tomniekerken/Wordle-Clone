@@ -20,7 +20,7 @@ const changeReadyWordleOnKeyInput = () => {
     // check currentReady next sibling
     // check if next sibling is inside row
     // if not, stay on currentReady
-
+    // adjust next ready wordle on key input
 }
 
 const changeWordleInnerHTML = (el) => {
