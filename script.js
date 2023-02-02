@@ -2,6 +2,15 @@ const keys = document.querySelectorAll('.key')
 
 const inputBoxes = document.querySelectorAll('.wordle-input')
 
+const changeReadyWordle = (el) => {
+    for (let i = 0; i < inputBoxes.length; i++) {
+        const box = inputBoxes[i];
+        box.classList.remove('ready')
+    }
+
+    el.classList.add('ready')
+}
+
 const changeWordleInnerHTML = (el) => {
     let ready = document.querySelector('.ready')
 
@@ -24,6 +33,12 @@ keys.forEach(el => {
         changeWordleInnerHTML(el)
     })
 });
+
+inputBoxes.forEach(el => {
+    el.addEventListener('click', () => {
+        changeReadyWordle(el)
+    })
+})
 
 
 
