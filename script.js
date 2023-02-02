@@ -1,3 +1,33 @@
+const keys = document.querySelectorAll('.key')
+
+const inputBoxes = document.querySelectorAll('.wordle-input')
+
+const changeWordleInnerHTML = (el) => {
+    let ready = document.querySelector('.ready')
+
+    if (el.innerHTML != 'Enter' || el.innerHTML != 'Löschen') {
+        ready.innerHTML = el.innerHTML
+    }
+
+    if (el.innerHTML == 'Enter') {
+        // TODO check worlde world
+        // TODO change active worlde row
+    }
+
+    if (el.innerHTML == 'Löschen') {
+        ready.innerHTML = ''
+    }
+}
+
+keys.forEach(el => {
+    el.addEventListener('click', () => {
+        changeWordleInnerHTML(el)
+    })
+});
+
+
+
+/* 
 const keyArr = document.querySelectorAll('.key')
 const boxNodelist = document.querySelectorAll('.wordle-input')
 const boxArr = Array.from(boxNodelist)
@@ -59,4 +89,4 @@ keyArr.forEach(el => {
     el.addEventListener('click', () => {
         changeWordleInnerHTML(el)
     })
-});
+}); */
