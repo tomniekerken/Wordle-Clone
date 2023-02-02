@@ -22,7 +22,7 @@ const changeWordleInnerHTML = (el) => {
     }
 
     if (el.innerHTML == 'Enter') {
-        // TODO
+        // TODO change active worlde row
     }
 
     if (el.innerHTML == 'Löschen') {
