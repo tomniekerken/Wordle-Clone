@@ -77,15 +77,20 @@ const handleKeyClick = (el) => {
         }
 
         for (let i = 0; i < wordle.length; i++) {
-            wordleArr.push(wordle.charAt(i).toLowerCase())
+            wordleArr.push(wordle.charAt(i).toUpperCase())
         }
+
+        compareWordles(word, wordArr, wordle.toUpperCase(), wordleArr)
+
+
+        /*
         
         let samePosition = []
         let differentPosition = []
         
         let wordArrMap = new Map();
         wordArr.forEach((char, index) => {
-            wordArrMap.set(char.toLowerCase(), index)
+            wordArrMap.set(char.toUpperCase(), index)
         })
         
         wordleArr.forEach(char => {
@@ -102,7 +107,7 @@ const handleKeyClick = (el) => {
         console.log(wordArr)
         
         console.log("Same position: ", samePosition)
-        console.log("Different position: ", differentPosition)
+        console.log("Different position: ", differentPosition) */
 
         // TODO change active worlde row
     }
@@ -114,6 +119,33 @@ const handleKeyClick = (el) => {
 
         ready.innerHTML = ''
     }
+}
+
+const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
+    console.log(userWord)
+    console.log(userWordArr)
+
+    console.log(wordle)
+    console.log(wordleArr)
+
+    let matches = []
+
+    // 1.
+    for (let i = 0; i < userWordArr.length; i++) {
+        for (let j = 0; j < wordleArr.length; j++) {
+            if (userWordArr[i] == wordleArr[j]) {
+                matches.push(userWordArr[i])
+            }
+        }
+    }
+
+    console.log(matches)
+    
+    // 1. Wie oft existiert jeder Buchstabe des userWord im Wordle
+    // 2. Falls er mind. 1x existiert, ist er aktuell an der richtigen Stelle?
+    // 3. Wenn er an der richtigen Stelle ist, dann soll dieser nicht mehr beachtet werden
+
+
 }
 
 keys.forEach(el => {
