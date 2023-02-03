@@ -8,7 +8,7 @@ const thirdBoxes = document.querySelectorAll('#third-wordle .wordle-input')
 const fourthBoxes = document.querySelectorAll('#fourth-wordle .wordle-input')
 const fifthBoxes = document.querySelectorAll('#fifth-wordle .wordle-input')
 
-let wordle = 'Mauer'
+let wordle = 'Maumr'
 
 const changeReadyWordle = (el) => {
     if (!el) {
@@ -63,7 +63,7 @@ const handleKeyClick = (el) => {
         let wordleArr = []
 
         for (let i = 0; i < activeWordleRowInputs.length; i++) {
-            wordArr[i] = activeWordleRowInputs[i].innerHTML.toUpperCase()
+            wordArr[i] = activeWordleRowInputs[i].innerHTML
         }
 
         let word = wordArr.join('')
@@ -77,20 +77,24 @@ const handleKeyClick = (el) => {
         }
 
         for (let i = 0; i < wordle.length; i++) {
-            wordleArr.push(wordle.charAt(i).toUpperCase())
+            wordleArr.push(wordle.charAt(i).toLowerCase())
         }
         
         let samePosition = []
         let differentPosition = []
         
-        wordArr.forEach(char => {
-            if (wordleArr.indexOf(char) !== -1) {
-                if (wordleArr.indexOf(char) === wordArr.indexOf(char)) {
+        let wordArrMap = new Map();
+        wordArr.forEach((char, index) => {
+            wordArrMap.set(char.toLowerCase(), index)
+        })
+        
+        wordleArr.forEach(char => {
+            if (wordArrMap.has(char)) {
+                if (wordleArr.indexOf(char) === wordArrMap.get(char)) {
                     samePosition.push(char)
                 } else {
                     differentPosition.push(char)
                 }
-                wordleArr[wordleArr.indexOf(char)] = null
             }
         })
         
