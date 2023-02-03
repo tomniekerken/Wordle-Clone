@@ -59,13 +59,23 @@ const handleKeyClick = (el) => {
     if (el.innerHTML == 'Enter') {
         // TODO check worlde word
         const activeWordleRowInputs = document.querySelectorAll('.active')
-        let word = []
+        let wordArr = []
 
         for (let i = 0; i < activeWordleRowInputs.length; i++) {
-            word[i] = activeWordleRowInputs[i].innerHTML
+            wordArr[i] = activeWordleRowInputs[i].innerHTML
         }
-        
-        console.log(word)
+
+        let word = wordArr.join('')
+
+        if (word.length != 5 && !typeof word !== "string") {
+            return
+        }
+
+        if (word == wordle) {
+            // If wordle is correct
+        } 
+
+        // Check for each character inside word array if it is correct
 
         // TODO change active worlde row
     }
