@@ -60,22 +60,45 @@ const handleKeyClick = (el) => {
         // TODO check worlde word
         const activeWordleRowInputs = document.querySelectorAll('.active')
         let wordArr = []
+        let wordleArr = []
 
         for (let i = 0; i < activeWordleRowInputs.length; i++) {
-            wordArr[i] = activeWordleRowInputs[i].innerHTML
+            wordArr[i] = activeWordleRowInputs[i].innerHTML.toUpperCase()
         }
 
         let word = wordArr.join('')
 
-        if (word.length != 5 && !typeof word !== "string") {
+        if (word.length != 5 && typeof word !== "string") {
             return
         }
 
         if (word == wordle) {
             // If wordle is correct
-        } 
+        }
 
-        // Check for each character inside word array if it is correct
+        for (let i = 0; i < wordle.length; i++) {
+            wordleArr.push(wordle.charAt(i).toUpperCase())
+        }
+        
+        let samePosition = []
+        let differentPosition = []
+        
+        wordArr.forEach(char => {
+            if (wordleArr.indexOf(char) !== -1) {
+                if (wordleArr.indexOf(char) === wordArr.indexOf(char)) {
+                    samePosition.push(char)
+                } else {
+                    differentPosition.push(char)
+                }
+                wordleArr[wordleArr.indexOf(char)] = null
+            }
+        })
+        
+        console.log(wordleArr)
+        console.log(wordArr)
+        
+        console.log("Same position: ", samePosition)
+        console.log("Different position: ", differentPosition)
 
         // TODO change active worlde row
     }
