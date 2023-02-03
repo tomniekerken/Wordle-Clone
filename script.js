@@ -8,7 +8,11 @@ const thirdBoxes = document.querySelectorAll('#third-wordle .wordle-input')
 const fourthBoxes = document.querySelectorAll('#fourth-wordle .wordle-input')
 const fifthBoxes = document.querySelectorAll('#fifth-wordle .wordle-input')
 
-const changeReadyWordleOnClick = (el) => {
+const changeReadyWordle = (el) => {
+    if (!el) {
+        return
+    }
+
     if (el.classList.contains('active')) {
         for (let i = 0; i < inputBoxes.length; i++) {
             const box = inputBoxes[i];
@@ -21,12 +25,10 @@ const changeReadyWordleOnClick = (el) => {
 
 const changeReadyWordleOnKeyInput = () => {
     let currentReady = document.querySelector('.ready')
-    let nextSibling = ''
 
     for (let i = 0; i < firstBoxes.length; i++) {
         if (currentReady == firstBoxes[i] && i + 1 <= firstBoxes.length) {
-            nextSibling = firstBoxes[i+1]
-            console.log(nextSibling)
+            changeReadyWordle(firstBoxes[i+1])
         }
     }
     // Array for each row
@@ -63,6 +65,6 @@ keys.forEach(el => {
 
 inputBoxes.forEach(el => {
     el.addEventListener('click', () => {
-        changeReadyWordleOnClick(el)
+        changeReadyWordle(el)
     })
 })
