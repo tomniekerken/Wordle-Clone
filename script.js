@@ -8,6 +8,8 @@ const thirdBoxes = document.querySelectorAll('#third-wordle .wordle-input')
 const fourthBoxes = document.querySelectorAll('#fourth-wordle .wordle-input')
 const fifthBoxes = document.querySelectorAll('#fifth-wordle .wordle-input')
 
+let wordle = 'Mauer'
+
 const changeReadyWordle = (el) => {
     if (!el) {
         return
@@ -56,6 +58,15 @@ const handleKeyClick = (el) => {
 
     if (el.innerHTML == 'Enter') {
         // TODO check worlde word
+        const activeWordleRowInputs = document.querySelectorAll('.active')
+        let word = []
+
+        for (let i = 0; i < activeWordleRowInputs.length; i++) {
+            word[i] = activeWordleRowInputs[i].innerHTML
+        }
+        
+        console.log(word)
+
         // TODO change active worlde row
     }
 
