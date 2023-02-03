@@ -38,11 +38,21 @@ const changeReadyWordleOnKeyInput = () => {
     // adjust next ready wordle on key input
 }
 
-const changeWordleInnerHTML = (el) => {
+const changeToPreviousInput = (el) => {
+    for (let i = 0; i < firstBoxes.length; i++) {
+        if (el == firstBoxes[i] && i - 1 >= 0) {
+            changeReadyWordle(firstBoxes[i-1])
+            console.log(firstBoxes[i-1])
+        }
+    }
+}
+
+const handleKeyClick = (el) => {
     let ready = document.querySelector('.ready')
 
-    if (el.innerHTML != 'Enter' || el.innerHTML != 'Löschen') {
+    if (el.innerHTML !== 'Enter' && el.innerHTML !== 'Löschen') {
         ready.innerHTML = el.innerHTML
+        changeReadyWordleOnKeyInput()
     }
 
     if (el.innerHTML == 'Enter') {
@@ -51,15 +61,17 @@ const changeWordleInnerHTML = (el) => {
     }
 
     if (el.innerHTML == 'Löschen') {
+        if (ready.innerHTML == '') {
+            changeToPreviousInput(ready)
+        }
+
         ready.innerHTML = ''
-        // if ready.innerHTML was empty, move to sibling left of it if its inside the row
     }
 }
 
 keys.forEach(el => {
     el.addEventListener('click', () => {
-        changeWordleInnerHTML(el)
-        changeReadyWordleOnKeyInput()
+        handleKeyClick(el)
     })
 });
 
