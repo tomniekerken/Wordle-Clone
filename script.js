@@ -42,7 +42,6 @@ const changeToPreviousInput = (el) => {
     for (let i = 0; i < firstBoxes.length; i++) {
         if (el == firstBoxes[i] && i - 1 >= 0) {
             changeReadyWordle(firstBoxes[i-1])
-            console.log(firstBoxes[i-1])
         }
     }
 }
