@@ -82,33 +82,6 @@ const handleKeyClick = (el) => {
 
         compareWordles(word, wordArr, wordle.toUpperCase(), wordleArr)
 
-
-        /*
-        
-        let samePosition = []
-        let differentPosition = []
-        
-        let wordArrMap = new Map();
-        wordArr.forEach((char, index) => {
-            wordArrMap.set(char.toUpperCase(), index)
-        })
-        
-        wordleArr.forEach(char => {
-            if (wordArrMap.has(char)) {
-                if (wordleArr.indexOf(char) === wordArrMap.get(char)) {
-                    samePosition.push(char)
-                } else {
-                    differentPosition.push(char)
-                }
-            }
-        })
-        
-        console.log(wordleArr)
-        console.log(wordArr)
-        
-        console.log("Same position: ", samePosition)
-        console.log("Different position: ", differentPosition) */
-
         // TODO change active worlde row
     }
 
@@ -129,22 +102,31 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
     console.log(wordleArr)
 
     let sameMatches = []
+    let samePositions = []
+
     let differentMatches = []
+    let differentPositions = []
 
     // 1.
     for (let i = 0; i < userWordArr.length; i++) {
         for (let j = 0; j < wordleArr.length; j++) {
             if (userWordArr[i] == wordleArr[j] && i == j) {
                 sameMatches.push(userWordArr[i])
+                samePositions.push(i+1)
             }
             if (userWordArr[i] == wordleArr[j] && i !== j) {
-                differentMatches.push(userWordArr[i])
+                if (!sameMatches.includes(userWordArr[i])) {
+                    differentMatches.push(userWordArr[i])
+                    differentPositions.push(j+1)
+                }
             }
         }
     }
 
     console.log("Same: ", sameMatches)
     console.log("Different: ", differentMatches)
+    console.log(samePositions)
+    console.log(differentPositions)
 
     // 1. Wie oft existiert jeder Buchstabe des userWord im Wordle
     // 2. Falls er mind. 1x existiert, ist er aktuell an der richtigen Stelle?
