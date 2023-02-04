@@ -72,8 +72,8 @@ const handleKeyClick = (el) => {
             return
         }
 
-        if (word == wordle) {
-            // If wordle is correct
+        if (word.toUpperCase() == wordle.toUpperCase()) {
+            return console.log("correct")
         }
 
         for (let i = 0; i < wordle.length; i++) {
@@ -107,6 +107,7 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
     let differentMatches = []
     let differentPositions = []
 
+    /* 
     let userWordCount = {}
     let wordleCount = {}
 
@@ -142,7 +143,7 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
         }
     }
 
-    console.log(userWordCount, wordleCount, result)
+    console.log(userWordCount, wordleCount, result) */
 
     // 1.
     /* 
@@ -166,6 +167,7 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
             if (userWordArr[i] == wordleArr[j]) {
                 if (i == j) {
                     sameMatches.push(userWordArr[i])
+                    samePositions.push(i+1)
                 }
                 if (i != j) {
                     differentMatches.push(userWordArr[i])
@@ -176,8 +178,8 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
 
     console.log("Same: ", sameMatches)
     console.log("Different: ", differentMatches)
-    console.log(samePositions)
-    console.log(differentPositions)
+    console.log("Same Match Position: ", samePositions)
+    console.log("Different Match Position: ", differentPositions)
 
     // 1. Wie oft existiert jeder Buchstabe des userWord im Wordle
     // 2. Falls er mind. 1x existiert, ist er aktuell an der richtigen Stelle?
