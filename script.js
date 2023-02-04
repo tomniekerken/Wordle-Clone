@@ -120,7 +120,29 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
         wordleCount[wordleArr[i]] = (wordleCount[wordleArr[i]] || 0) +1
     }
 
-    console.log(userWordCount, wordleCount)
+    const result = {};
+
+    for (const key in wordleCount) {
+        if (userWordCount.hasOwnProperty(key)) {
+            if (wordleCount[key] > userWordCount[key]) {
+                result[key] = 'more in wordle';
+            } else if (wordleCount[key] < userWordCount[key]) {
+                result[key] = 'more in userWord';
+            } else {
+                result[key] = 'equal in both';
+            }
+        } else {
+            result[key] = 'only in wordle';
+        }
+    }
+
+    for (const key in userWordCount) {
+        if (!wordleCount.hasOwnProperty(key)) {
+            result[key] = 'only in userWord';
+        }
+    }
+
+    console.log(userWordCount, wordleCount, result)
 
     // 1.
     /* 
