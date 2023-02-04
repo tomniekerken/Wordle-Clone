@@ -107,7 +107,23 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
     let differentMatches = []
     let differentPositions = []
 
+    let userWordCount = {}
+    let wordleCount = {}
+
+    // Counting characters inside the users submitted word
+    for (let i = 0; i < userWordArr.length; i++) {
+        userWordCount[userWordArr[i]] = (userWordCount[userWordArr[i]] || 0) +1
+    }
+
+    // Counting characters inside the wordle word
+    for (let i = 0; i < wordleArr.length; i++) {
+        wordleCount[wordleArr[i]] = (wordleCount[wordleArr[i]] || 0) +1
+    }
+
+    console.log(userWordCount, wordleCount)
+
     // 1.
+    /* 
     for (let i = 0; i < userWordArr.length; i++) {
         for (let j = 0; j < wordleArr.length; j++) {
             if (userWordArr[i] == wordleArr[j] && i == j) {
@@ -118,6 +134,19 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
                 if (!sameMatches.includes(userWordArr[i])) {
                     differentMatches.push(userWordArr[i])
                     differentPositions.push(j+1)
+                }
+            }
+        }
+    } */
+
+    for (let i = 0; i < userWordArr.length; i++) {
+        for (let j = 0; j < wordleArr.length; j++) {
+            if (userWordArr[i] == wordleArr[j]) {
+                if (i == j) {
+                    sameMatches.push(userWordArr[i])
+                }
+                if (i != j) {
+                    differentMatches.push(userWordArr[i])
                 }
             }
         }
