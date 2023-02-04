@@ -162,21 +162,31 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
         }
     } */
 
+    let correctChars = []
+    let multipleChars = []
+    let wrongChars = []
+
+    // Wenn Buchstabe in sameMatch dann nicht mehr beachten?
     for (let i = 0; i < userWordArr.length; i++) {
         for (let j = 0; j < wordleArr.length; j++) {
+            if (userWordArr[i] == userWordArr[j] && i != j) {
+                multipleChars.push(userWordArr[j])
+            }
             if (userWordArr[i] == wordleArr[j]) {
                 if (i == j) {
                     sameMatches.push(userWordArr[i])
                     samePositions.push(i+1)
                 }
-                if (i != j) {
+                if (i != j && !sameMatches.includes(userWordArr[i])) {
                     differentMatches.push(userWordArr[i])
+                    differentPositions.push(i+1)
                 }
             }
         }
     }
 
     console.log("Same: ", sameMatches)
+    console.log("Multiple: ", multipleChars)
     console.log("Different: ", differentMatches)
     console.log("Same Match Position: ", samePositions)
     console.log("Different Match Position: ", differentPositions)
