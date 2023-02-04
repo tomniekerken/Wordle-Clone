@@ -8,7 +8,7 @@ const thirdBoxes = document.querySelectorAll('#third-wordle .wordle-input')
 const fourthBoxes = document.querySelectorAll('#fourth-wordle .wordle-input')
 const fifthBoxes = document.querySelectorAll('#fifth-wordle .wordle-input')
 
-let wordle = 'Maumr'
+let wordle = 'Mauer'
 
 const changeReadyWordle = (el) => {
     if (!el) {
@@ -33,11 +33,6 @@ const changeReadyWordleOnKeyInput = () => {
             changeReadyWordle(firstBoxes[i+1])
         }
     }
-    // Array for each row
-    // check currentReady next sibling
-    // check if next sibling is inside row
-    // if not, stay on currentReady
-    // adjust next ready wordle on key input
 }
 
 const changeToPreviousInput = (el) => {
@@ -73,7 +68,7 @@ const handleKeyClick = (el) => {
         }
 
         if (word.toUpperCase() == wordle.toUpperCase()) {
-            return console.log("correct")
+            changeBgColor('', '', true)
         }
 
         for (let i = 0; i < wordle.length; i++) {
@@ -107,66 +102,10 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
     let differentMatches = []
     let differentPositions = []
 
-    /* 
-    let userWordCount = {}
-    let wordleCount = {}
-
-    // Counting characters inside the users submitted word
-    for (let i = 0; i < userWordArr.length; i++) {
-        userWordCount[userWordArr[i]] = (userWordCount[userWordArr[i]] || 0) +1
-    }
-
-    // Counting characters inside the wordle word
-    for (let i = 0; i < wordleArr.length; i++) {
-        wordleCount[wordleArr[i]] = (wordleCount[wordleArr[i]] || 0) +1
-    }
-
-    const result = {};
-
-    for (const key in wordleCount) {
-        if (userWordCount.hasOwnProperty(key)) {
-            if (wordleCount[key] > userWordCount[key]) {
-                result[key] = 'more in wordle';
-            } else if (wordleCount[key] < userWordCount[key]) {
-                result[key] = 'more in userWord';
-            } else {
-                result[key] = 'equal in both';
-            }
-        } else {
-            result[key] = 'only in wordle';
-        }
-    }
-
-    for (const key in userWordCount) {
-        if (!wordleCount.hasOwnProperty(key)) {
-            result[key] = 'only in userWord';
-        }
-    }
-
-    console.log(userWordCount, wordleCount, result) */
-
-    // 1.
-    /* 
-    for (let i = 0; i < userWordArr.length; i++) {
-        for (let j = 0; j < wordleArr.length; j++) {
-            if (userWordArr[i] == wordleArr[j] && i == j) {
-                sameMatches.push(userWordArr[i])
-                samePositions.push(i+1)
-            }
-            if (userWordArr[i] == wordleArr[j] && i !== j) {
-                if (!sameMatches.includes(userWordArr[i])) {
-                    differentMatches.push(userWordArr[i])
-                    differentPositions.push(j+1)
-                }
-            }
-        }
-    } */
-
     let correctChars = []
     let multipleChars = []
     let wrongChars = []
 
-    // Wenn Buchstabe in sameMatch dann nicht mehr beachten?
     for (let i = 0; i < userWordArr.length; i++) {
         for (let j = 0; j < wordleArr.length; j++) {
             if (userWordArr[i] == userWordArr[j] && i != j) {
@@ -175,11 +114,11 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
             if (userWordArr[i] == wordleArr[j]) {
                 if (i == j) {
                     sameMatches.push(userWordArr[i])
-                    samePositions.push(i+1)
+                    samePositions.push(i)
                 }
                 if (i != j && !sameMatches.includes(userWordArr[i])) {
                     differentMatches.push(userWordArr[i])
-                    differentPositions.push(i+1)
+                    differentPositions.push(i)
                 }
             }
         }
@@ -191,11 +130,23 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
     console.log("Same Match Position: ", samePositions)
     console.log("Different Match Position: ", differentPositions)
 
-    // 1. Wie oft existiert jeder Buchstabe des userWord im Wordle
-    // 2. Falls er mind. 1x existiert, ist er aktuell an der richtigen Stelle?
-    // 3. Wenn er an der richtigen Stelle ist, dann soll dieser nicht mehr beachtet werden
+    changeBgColor(samePositions)
+}
 
+const changeBgColor = (samePositions, differentPositions, correct) => {
+    let currentActives = document.querySelectorAll('.active')
 
+    for (let i = 0; i < currentActives.length; i++) {
+        if (currentActives[samePositions[i]]) {
+            currentActives[samePositions[i]].style.backgroundColor = 'green'
+        }
+
+        // TODO: Show different positions as yellow
+
+        if (correct) {
+            currentActives[i].style.backgroundColor = 'green'
+        }
+    }
 }
 
 keys.forEach(el => {
