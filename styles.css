@@ -82,3 +82,12 @@ main {
 .match {
     background-color: #0e9b34;
 }
+
+.different {
+    background-color: #d5b60f;
+}
+
+.match-and-different {
+    background: rgb(14,155,52);
+    background: linear-gradient(90deg, rgba(14,155,52,1) 50%, rgba(213,182,15,1) 50%);
+}
