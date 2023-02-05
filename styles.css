@@ -78,3 +78,7 @@ main {
 .large {
     padding: 1vh 2vw;
 }
+
+.match {
+    background-color: #0e9b34;
+}
