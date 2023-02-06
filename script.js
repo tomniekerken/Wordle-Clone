@@ -155,6 +155,7 @@ const changeBgColor = (samePositions, differentPositions, multiplePositions, cor
         }
 
         // TODO display multiple chars correctly
+        // Count how many chars match
 
         if (correct) {
             currentActives[i].classList.add('match')
