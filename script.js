@@ -130,7 +130,7 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
     console.log("Same Match Position: ", samePositions)
     console.log("Different Match Position: ", differentPositions)
 
-    changeBgColor(samePositions)
+    changeBgColor(samePositions, differentPositions)
 }
 
 const changeBgColor = (samePositions, differentPositions, correct) => {
@@ -138,13 +138,17 @@ const changeBgColor = (samePositions, differentPositions, correct) => {
 
     for (let i = 0; i < currentActives.length; i++) {
         if (currentActives[samePositions[i]]) {
-            currentActives[samePositions[i]].style.backgroundColor = 'green'
+            currentActives[samePositions[i]].classList.add('match')
         }
 
-        // TODO: Show different positions as yellow
+        if (currentActives[differentPositions[i]]) {
+            currentActives[differentPositions[i]].classList.add('different')
+        }
+
+        // TODO display multiple chars correctly
 
         if (correct) {
-            currentActives[i].style.backgroundColor = 'green'
+            currentActives[i].classList.add('match')
         }
     }
 }
