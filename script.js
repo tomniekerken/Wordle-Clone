@@ -126,6 +126,9 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
         }
     }
 
+    // Check if more multiple 
+    console.log("Multiple Chars: ", multipleChars)
+
     console.log("Same: ", sameMatches)
     console.log("Multiple: ", multiplePositions)
     console.log("Different: ", differentMatches)
@@ -139,16 +142,16 @@ const changeBgColor = (samePositions, differentPositions, multiplePositions, cor
     let currentActives = document.querySelectorAll('.active')
 
     for (let i = 0; i < currentActives.length; i++) {
+        if (samePositions[i] !== multiplePositions[i] & currentActives[multiplePositions[i]]) {
+            currentActives[multiplePositions[i]].classList.add('different')
+        }
+
         if (currentActives[samePositions[i]]) {
             currentActives[samePositions[i]].classList.add('match')
         }
 
         if (currentActives[differentPositions[i]]) {
             currentActives[differentPositions[i]].classList.add('different')
-        }
-
-        if (samePositions[i] != multiplePositions[i] && currentActives[multiplePositions[i]]) {
-            currentActives[multiplePositions[i]].classList.add('different')
         }
 
         // TODO display multiple chars correctly
