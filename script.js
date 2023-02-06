@@ -104,12 +104,14 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
 
     let correctChars = []
     let multipleChars = []
+    let multiplePositions = []
     let wrongChars = []
 
     for (let i = 0; i < userWordArr.length; i++) {
         for (let j = 0; j < wordleArr.length; j++) {
             if (userWordArr[i] == userWordArr[j] && i != j) {
                 multipleChars.push(userWordArr[j])
+                multiplePositions.push(i)
             }
             if (userWordArr[i] == wordleArr[j]) {
                 if (i == j) {
@@ -125,7 +127,7 @@ const compareWordles = (userWord, userWordArr, wordle, wordleArr) => {
     }
 
     console.log("Same: ", sameMatches)
-    console.log("Multiple: ", multipleChars)
+    console.log("Multiple: ", multiplePositions)
     console.log("Different: ", differentMatches)
     console.log("Same Match Position: ", samePositions)
     console.log("Different Match Position: ", differentPositions)
