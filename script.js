@@ -58,12 +58,14 @@ const handleKeyClick = (el) => {
         let wordleArr = []
 
         for (let i = 0; i < activeWordleRowInputs.length; i++) {
-            wordArr[i] = activeWordleRowInputs[i].innerHTML
+            if (activeWordleRowInputs[i].innerHTML.trim() != '') {
+                wordArr[i] = activeWordleRowInputs[i].innerHTML
+            }
         }
 
         let word = wordArr.join('')
 
-        if (word.length != 5 && typeof word !== "string") {
+        if (word.length != 5) {
             return
         }
 
